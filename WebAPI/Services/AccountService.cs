@@ -70,6 +70,11 @@ public class AccountService(UserManager<IdentityUser> userManager, RoleManager<I
         return await _userManager.FindByEmailAsync(email) != null;
     }
 
+    public async Task<IdentityUser> GetUserByIdAsync(string id)
+    {
+        return await _userManager.FindByIdAsync(id);
+    }
+
 }
 
 

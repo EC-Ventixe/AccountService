@@ -48,4 +48,15 @@ public class AccountController(AccountService accountService, IConfiguration con
         return Ok(new { token });
     }
 
+
+    [HttpGet("getuser/{id}")]
+    public async Task<IActionResult> GetUser(string id)
+    {
+        var user = await _accountService.GetUserByIdAsync(id);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+        return Ok(user);
+    }
 }
